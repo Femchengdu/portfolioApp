@@ -6,7 +6,7 @@ services:
   - docker
 
 before_install:
-  - docker build -t rdevcd2020/portfolio-app -f Dockerfile.dev ./target-portfolio
+  - docker build -t rdevcd2020/portfolio-app -f ./target-portfolio/Dockerfile.dev ./target-portfolio
 
 script:
   - docker run -e CI=true rdevcd2020/portfolio-app yarn test --coverage
