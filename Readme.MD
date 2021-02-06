@@ -33,3 +33,7 @@ docker build . <default>
 docker build -f <filename_option>
 
 docker build -t <buildwithtag/tag_name:latest> .
+
+### Exit react tests immediatly by setting CI=true
+
+docker run -e CI=true rdevcd2020/prtclient:1.0 yarn test --coverage
