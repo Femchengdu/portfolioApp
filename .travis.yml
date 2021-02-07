@@ -3,7 +3,9 @@ endpoints:
     access_token: $GITHUB_API_TOKEN
   https://api.travis-ci.com/:
     access_token: $GITHUB_API_TOKEN
-  
+
+# addons:
+#   ssh_known_hosts: 157.245.252.42    
 
 language: generic
 
@@ -20,8 +22,8 @@ before_install:
 script: 
   - docker run -e CI=true rdevcd2020/portfolio-app yarn test --coverage
 
-deploy:
-  provider: script
-  script: deploy.sh
-  on:
-    branch: master
+# deploy:
+#   provider: script
+#   script: deploy.sh
+#   on:
+#     branch: master
