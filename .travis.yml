@@ -3,9 +3,7 @@ endpoints:
     access_token: $GITHUB_API_TOKEN
   https://api.travis-ci.com/:
     access_token: $GITHUB_API_TOKEN
-
-addons:
-  ssh_known_hosts: 157.245.252.42    
+  
 
 language: generic
 
