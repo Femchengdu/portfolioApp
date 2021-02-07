@@ -4,9 +4,8 @@
 #   https://api.travis-ci.com/:
 #     access_token: $GITHUB_API_TOKEN
 
-
 # addons:
-#   ssh_known_hosts: 157.245.252.42    
+#   ssh_known_hosts: 157.245.252.42
 
 language: generic
 
@@ -16,11 +15,11 @@ services:
   - docker
 
 before_install:
-  - openssl aes-256-cbc -K $encrypted_64b142302ac3_key -iv $encrypted_64b142302ac3_iv
-  -in test_travis_rsa.enc -out ~\/.ssh/test_travis_rsa -d
+  # - openssl aes-256-cbc -K $encrypted_64b142302ac3_key -iv $encrypted_64b142302ac3_iv
+  # -in test_travis_rsa.enc -out ~\/.ssh/test_travis_rsa -d
   - docker build -t rdevcd2020/portfolio-app -f ./target-portfolio/Dockerfile.dev ./target-portfolio
 
-script: 
+script:
   - docker run -e CI=true rdevcd2020/portfolio-app yarn test --coverage
 
 deploy:
