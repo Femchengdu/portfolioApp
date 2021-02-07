@@ -24,8 +24,3 @@ before_install:
 script: 
   - docker run -e CI=true rdevcd2020/portfolio-app yarn test --coverage
 
-deploy:
-  provider: script
-  script: deploy.sh
-  on:
-    branch: master
