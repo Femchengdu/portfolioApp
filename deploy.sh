@@ -1,5 +1,3 @@
-!/bin/bash
-
 # print outputs ond exit on first filure
 set -xe
 
@@ -10,10 +8,8 @@ set -xe
     ssh-add ~/.ssh/id_rsa
     echo "Added keys"
     echo "Trying to ssh into digital ocean:"
-    ssh test_travis@157.245.252.42
-    echo "Maybe success ? writing docker version "
-    docker -v >> success.txt
-        echo "Succesful writ ? written version "
+    ssh test_travis@$DEPLOY_IP < ./success.sh
+
     # Dont know what to do with git here
 
     # Pull the latest docker images
