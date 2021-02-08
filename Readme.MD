@@ -37,3 +37,30 @@ docker build -t <buildwithtag/tag_name:latest> .
 ### Exit react tests immediatly by setting CI=true
 
 docker run -e CI=true rdevcd2020/prtclient:1.0 yarn test --coverage
+
+### SSH into digital ocean
+
+It is important to have the sha key in the project root when
+you rund travis encrypt, after which you can delete the source file
+
+### Using the ip of the droplet as a travis variable
+
+This will prompt a connection confirmation. Best to use
+the raw ip in the travis.yml file under addons: ssh_know_host: keys
+
+### Passing the server commands after the ssh user@server_ip command
+
+There are two ways to do this:
+user@server_ip "other server commands seperated by exit"
+
+### Or I can create a seperate shell script and link it:
+
+user@server_ip "bash -s" < other_shell_script.sh
+
+## Note in the other shell script, some commands would need to be wrapped in eval e.g.
+
+eval "$(docker -v >> somefile.txt)"
+
+### here, any other command after the exit command is not logged to the travis command line
+
+### Because of this, I prefer the one line method, as I can log values after I exit the servers

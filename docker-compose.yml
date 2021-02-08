@@ -2,30 +2,37 @@
 version: "3"
 
 services:
+  nginx:
+    restart: always
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./nginx
+    ports:
+      - "3050:80"
   backend:
     build:
       context: ./portfolio-backend
-      dockerfile: ./Dockerfile
+      dockerfile: ./Dockerfile.dev
     image: "rdevcd2020/prtbackend:1.0"
     ports:
       - "2888:2888"
   frontend:
     build:
-      context: ./target-portfolio
+      context: ./portfolio-backend/target-portfolio
       dockerfile: Dockerfile.dev
     image: "rdevcd2020/prtclient:1.0"
     ports:
       - "3000:3000"
     volumes:
       - /app/portfolio/node_modules
-      - ./target-portfolio:/app/portfolio
+      - ./portfolio-backend/target-portfolio:/app/portfolio
     links:
       - "backend"
   tests:
     build:
-      context: ./target-portfolio
+      context: ./portfolio-backend/target-portfolio
       dockerfile: Dockerfile.dev
     volumes:
       - /app/portfolio/node_modules
-      - ./target-portfolio:/app/portfolio
+      - ./portfolio-backend/target-portfolio:/app/portfolio
     command: ["yarn", "test"]

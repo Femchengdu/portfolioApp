@@ -25,6 +25,11 @@ app.get("/test_server", (req, res) => {
   );
 });
 
+// Handles any requests that don't match the ones above
+app.get("*", (req, res) => {
+  res.sendFile(`${__dirname}/client/build/index.html`);
+});
+
 app.listen(config.port, () => {
   console.log(`Express app started at localhost:${config.port}`);
 });
