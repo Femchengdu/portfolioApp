@@ -9,14 +9,14 @@ before_install:
   - docker build -t rdevcd2020/port-app-test -f ./target-portfolio/Dockerfile.dev ./target-portfolio
 
 script:
-  - docker run -e CI=true rdevcd2020/portfolio-app yarn test --coverage
+  - docker run -e CI=true rdevcd2020/port-app-test yarn test -- --coverage
 
 after_success:
-  - docker build -t rdevcd2020/port-app-prod-feb7 ./
+  - docker build -t rdevcd2020/port-app-prod-feb8 .
   # Login to docker CLI
   - echo "$DOCKER_PWD" | docker login -u "$DOCKER_ID" --password-stdin
   # Push the image to docker hub
-  - docker push rdevcd2020/port-app-prod-feb7
+  - docker push rdevcd2020/port-app-prod-feb8
   # deploy:
 #   provider: script
 #   script: deploy.sh
