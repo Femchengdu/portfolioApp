@@ -2,7 +2,7 @@
 
 # print outputs ond exit on first filure
 set -xe
-if [$TRAVIS_BRANC == 'master']; then
+
     echo "Running deploy script"
     # setup ssh agent, git config and remote
     eval "$(ssh-agent -s)"
@@ -23,4 +23,3 @@ if [$TRAVIS_BRANC == 'master']; then
 
     # Start a new container using the latest image
 
-fi
