@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const https = require("https");
 const port = process.env.PORT || 2888;
+const portSsl = process.env.PORT_SSL || 2443;
 
 const forceHttps = (req, res, next) => {
   if (!req.secure) {
@@ -47,4 +48,4 @@ const options = { key: privateKeyCert, cert: fullKeyCert };
 app.listen(port, () => {
   console.log(`Express app started at localhost:${port}`);
 });
-https.createServer(options, app).listen(port);
+https.createServer(options, app).listen(portSsl);
