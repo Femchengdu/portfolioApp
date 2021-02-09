@@ -1,23 +1,8 @@
-//const bodyParser = require("body-parser");
-// Are these two lines below necessary?
-//app.use(bodyParser.json());
-//app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
-
-if (process.env.NODE_ENV !== "production") {
-  require("dotenv").config();
-}
-
-//const fs = require("fs");
 const express = require("express");
 const cors = require("cors");
-/**
- * Add https as per the docs
- */
 const https = require("https");
-const http = require("http");
-const port = process.env.PORT || 80;
+const port = process.env.PORT || 2888;
 
-// Https forcing middleware
 const forceHttps = (req, res, next) => {
   if (!req.secure) {
     res.redirect(301, "https://" + req.hostname + req.originalUrl);
@@ -27,14 +12,11 @@ const forceHttps = (req, res, next) => {
 
 const app = new express();
 // Application level middleware
-app.use(cors());
-
-// force https using app.all
 app.all("*", forceHttps);
+app.use(cors());
 
 // Server the react files
 app.use(express.static(`${__dirname}/client/build`));
-// My custom application level middleware
 
 app.get("/test_server", (req, res) => {
   res.send(
@@ -62,10 +44,7 @@ const options = { key: privateKeyCert, cert: fullKeyCert };
  * http and https as per the docs
  */
 
-http.createServer(app).listen(port);
-https.createServer(options, app).listen(443);
-
-// Use this in dev mode only
-// app.listen(config.port, () => {
-//   console.log(`Express app started at localhost:${config.port}`);
-// });
+app.listen(port, () => {
+  console.log(`Express app started at localhost:${config.port}`);
+});
+https.createServer(options, app).listen(port);
