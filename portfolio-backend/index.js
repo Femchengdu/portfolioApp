@@ -1,4 +1,6 @@
-const config = require("./config");
+const config = {
+  port: 2888,
+};
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
