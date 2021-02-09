@@ -7,7 +7,7 @@ if (process.env.NODE_ENV !== "production") {
   require("dotenv").config();
 }
 
-const fs = require("fs");
+//const fs = require("fs");
 const express = require("express");
 const cors = require("cors");
 /**
@@ -53,10 +53,9 @@ app.get("*", (req, res) => {
 /*
  * Added to enable https certificate
  */
-const fullKeyPath = process.env.FULL_CHAIN_PATH;
-const privateKeyPath = process.env.PRIV_KEY_PATH;
-const privateKeyCert = fs.readFileSync(privateKeyPath, "utf8");
-const fullKeyCert = fs.readFileSync(fullKeyPath, "utf8");
+// Workaround for docker
+const privateKeyCert = process.env.CERT_PRIV_KEY; //fs.readFileSync(privateKeyPath, "utf8");
+const fullKeyCert = process.env.CERT_FULL_KEY; //fs.readFileSync(fullKeyPath, "utf8");
 const options = { key: privateKeyCert, cert: fullKeyCert };
 
 /**
