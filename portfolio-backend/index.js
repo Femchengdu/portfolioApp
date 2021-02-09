@@ -45,6 +45,6 @@ const options = { key: privateKeyCert, cert: fullKeyCert };
  */
 
 app.listen(port, () => {
-  console.log(`Express app started at localhost:${config.port}`);
+  console.log(`Express app started at localhost:${port}`);
 });
 https.createServer(options, app).listen(port);
