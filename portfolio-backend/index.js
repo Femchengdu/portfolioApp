@@ -5,6 +5,7 @@ const port = process.env.PORT || 2888;
 const portSsl = process.env.PORT_SSL || 2443;
 
 const forceHttps = (req, res, next) => {
+  console.log("Forcing redirect");
   if (!req.secure) {
     res.redirect(301, "https://" + req.hostname + req.originalUrl);
   }
@@ -14,10 +15,9 @@ const forceHttps = (req, res, next) => {
 const app = new express();
 // Application level middleware
 app.all("*", forceHttps);
-app.use(cors());
-
 // Server the react files
 app.use(express.static(`${__dirname}/client/build`));
+app.use(cors());
 
 app.get("/test_server", (req, res) => {
   res.send(
@@ -29,7 +29,8 @@ app.get("/test_server", (req, res) => {
 });
 
 // Handles any requests that don't match the ones above
-app.get("*", (req, res) => {
+app.get("/*", (req, res) => {
+  console.log("Sending index page");
   res.sendFile(`${__dirname}/client/build/index.html`);
 });
 
@@ -45,9 +46,9 @@ const options = { key: privateKeyCert, cert: fullKeyCert };
  * http and https as per the docs
  */
 
-// app.listen(port, () => {
-//   console.log(`Express app started at localhost:${port}`);
-// });
+app.listen(port, () => {
+  console.log(`Express app started at localhost:${port}`);
+});
 https.createServer(options, app).listen(portSsl, () => {
   console.log(`Express app started at localhost:${portSsl}`);
 });
