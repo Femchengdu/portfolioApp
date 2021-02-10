@@ -5,8 +5,8 @@ const port = process.env.PORT || 2888;
 const portSsl = process.env.PORT_SSL || 2443;
 
 const forceHttps = (req, res, next) => {
-  console.log("Forcing redirect");
   if (!req.secure) {
+    console.log("Forcing redirect");
     res.redirect(301, "https://" + req.hostname + req.originalUrl);
   }
   next();

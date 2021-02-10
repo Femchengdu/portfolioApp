@@ -1,0 +1,20 @@
+.baseBtn {
+  display: inline-block;
+  padding: 0.8rem 2rem;
+  transition: all 0.5s;
+  border: none;
+  cursor: pointer;
+}
+
+div.baseBtn:hover {
+  background: #ffbc00;
+}
+
+.btnLight {
+  color: #333;
+  background: #f4f4f4;
+}
+
+.bolderText {
+  font-weight: bolder;
+}

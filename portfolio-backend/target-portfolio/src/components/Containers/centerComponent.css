@@ -1,0 +1,11 @@
+.centerMe {
+  max-width: 1280px;
+  padding: 0 1.5rem;
+  margin: auto;
+  overflow: hidden;
+}
+
+.centerAboveTint {
+  position: relative;
+  z-index: 3;
+}

@@ -1,5 +1,6 @@
 import useTestServer from "./hooks/useTestServer";
-
+import LandingPage from "./components/Header/LandingPage";
+import "./app.css";
 function App() {
   const serverResponse = useTestServer();
   let serverMessage;
@@ -9,7 +10,7 @@ function App() {
   }
   return (
     <div className="App">
-      <div>It works! {serverMessage && serverMessage}</div>
+      <LandingPage />
     </div>
   );
 }
