@@ -1,0 +1,40 @@
+.mainFooter {
+  background: #333;
+  color: white;
+  height: 5rem;
+}
+
+@media (max-width: 500px) {
+  .mainFooter {
+    height: 7rem;
+  }
+}
+.footerContentContainer {
+  display: flex;
+  justify-content: space-between;
+  height: 5rem;
+  align-items: center;
+}
+
+@media (max-width: 500px) {
+  .footerContentContainer {
+    flex-direction: column;
+    padding: 1rem;
+    height: 5rem;
+  }
+}
+
+.styledFontAwesomeIcons {
+  margin-right: 1rem;
+  border: 2px white solid;
+  border-radius: 50%;
+  height: 20px;
+  width: 20px;
+  line-height: 20px;
+  text-align: center;
+  padding: 0.5rem;
+}
+
+.styledFontAwesomeIcons:hover {
+  background: #ffbc00;
+}

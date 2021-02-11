@@ -8,7 +8,7 @@ const LandingPage = () => {
   return (
     <header id="header-home">
       <div className="backgroundImg">
-        <CenterComponent>
+        <CenterComponent addTintPosition={true}>
           <MainNavContainer>
             <MainNavLogo />
             <div style={{ width: "50px" }}>
