@@ -7,6 +7,10 @@ client image docker.io/rdevcd2020/prtclient:1.0
 
 ### Run docker and overide the default start command in docker file
 
+## Run the shell in a container to poke around
+
+docker run -it <container_name> sh
+
 docker run -it<standard> -p <optional_port_mapping> <container-name> <command>
 
 ### Add tests to a running container from docker compose
@@ -64,3 +68,17 @@ eval "$(docker -v >> somefile.txt)"
 ### here, any other command after the exit command is not logged to the travis command line
 
 ### Because of this, I prefer the one line method, as I can log values after I exit the servers
+
+sudo docker run -d -p 80:2888 rdevcd2020/express-react-feb8:/app/portfolio
+
+docker cp config.js 23c75289a7b7:/app/portfolio
+
+### Certbot renewal after failed google card payment
+
+ssh into the server
+
+stop the server running teardown.sh
+
+run sudo certbot certonly --standalone
+
+### Copy the new files into the .env file
