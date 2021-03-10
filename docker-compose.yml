@@ -1,38 +1,38 @@
 # Compose file combines two docker files.
+#  nginx:
+#    restart: always
+#    build:
+#      dockerfile: Dockerfile.dev
+#      context: ./nginx
+#    ports:
+#      - "3050:80"
 version: "3"
 
 services:
-  nginx:
-    restart: always
-    build:
-      dockerfile: Dockerfile.dev
-      context: ./nginx
-    ports:
-      - "3050:80"
   backend:
     build:
       context: ./portfolio-backend
       dockerfile: ./Dockerfile.dev
-    image: "rdevcd2020/prtbackend:1.0"
+    image: "rdevcd2020/prt-dev-backend:1.0"
     ports:
       - "2888:2888"
   frontend:
     build:
-      context: ./portfolio-backend/target-portfolio
+      context: ./portfolio-frontend
       dockerfile: Dockerfile.dev
-    image: "rdevcd2020/prtclient:1.0"
+    image: "rdevcd2020/prt-dev-client:1.0"
     ports:
       - "3000:3000"
     volumes:
       - /app/portfolio/node_modules
-      - ./portfolio-backend/target-portfolio:/app/portfolio
+      - ./portfolio-frontend:/app/portfolio
     links:
       - "backend"
   tests:
     build:
-      context: ./portfolio-backend/target-portfolio
+      context: ./portfolio-frontend
       dockerfile: Dockerfile.dev
     volumes:
       - /app/portfolio/node_modules
-      - ./portfolio-backend/target-portfolio:/app/portfolio
+      - ./portfolio-frontend:/app/portfolio
     command: ["yarn", "test"]
