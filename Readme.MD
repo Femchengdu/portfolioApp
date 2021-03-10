@@ -82,3 +82,10 @@ stop the server running teardown.sh
 run sudo certbot certonly --standalone
 
 ### Copy the new files into the .env file
+
+copy cert/fullchain
+copy cert/private
+
+### After saving the files run,
+
+sudo docker-compose up -d
