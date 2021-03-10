@@ -9,14 +9,12 @@ before_install:
     -in test_travis_rsa.enc -out test_travis_rsa -d
   - chmod 600 test_travis_rsa
   - mv test_travis_rsa ~/.ssh/id_rsa
-  - docker build -t rdevcd2020/port-app-test -f ./portfolio-backend/target-portfolio/Dockerfile.dev ./portfolio-backend/target-portfolio
+  - docker build -t rdevcd2020/port-app-test -f ./portfolio-frontend/Dockerfile.dev ./portfolio-frontend
 script:
   - docker run -e CI=true rdevcd2020/port-app-test yarn test -- --coverage
 
 after_success:
-  - docker build -t rdevcd2020/express-react-feb8 ./portfolio-backend
-  #- docker build -t rdevcd2020/multi-nginx-feb8 ./nginx
-
+  - docker build -t rdevcd2020/express-react-feb8 .
   - echo "$DOCKER_PWD" | docker login -u "$DOCKER_ID" --password-stdin
   - docker push rdevcd2020/express-react-feb8
   #- docker push rdevcd2020/multi-nginx-feb8
