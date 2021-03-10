@@ -13,4 +13,4 @@ COPY . .
 
 EXPOSE 2888
 
-CMD [ "yarn", "start:backend" ]
+CMD [ "yarn", "start:dev:backend" ]
