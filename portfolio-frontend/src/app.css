@@ -1,3 +1,4 @@
+/*Global Styles*/
 * {
   margin: 0;
   padding: 0;
@@ -6,5 +7,24 @@
 body {
   font-family: "Dosis", sans-serif;
   line-height: 1.6;
-  background: white;
+  background: #fff;
+}
+
+h1 {
+  font-family: "Dosis", sans-serif;
+}
+
+h2,
+h3,
+h4 {
+  font-family: "Dosis", sans-serif;
+  text-transform: uppercase;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  width: 100%;
 }
