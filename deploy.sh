@@ -6,7 +6,7 @@ echo "Agent started"
 ssh-add ~/.ssh/id_rsa
 echo "Added keys"
 echo "Trying to ssh into digital ocean:"
-ssh test_travis@157.245.252.42 'load your image here exit'
+ssh test_travis@157.245.252.42
 echo "Tearing down site"
 sudo docker-compose down
 echo "Stopped all containers"
