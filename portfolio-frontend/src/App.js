@@ -2,6 +2,7 @@
 import LandingPage from "./components/Header/LandingPage";
 import ProjectsContainer from "./components/Containers/ProjectsContainer";
 import MainFooter from "./components/Footer/MainFooter";
+import Page from "./components/Page/Page";
 import useAppPage from "./hooks/useAppPage";
 import usePageTitle from "./hooks/usePageTitle";
 import AppContext from "./context/AppContext";
@@ -17,11 +18,7 @@ const App = () => {
   // }
   return (
     <AppContext.Provider value={appPageObj}>
-      <div className="App">
-        <LandingPage />
-        <ProjectsContainer />
-        <MainFooter />
-      </div>
+      <Page />
     </AppContext.Provider>
   );
 };
