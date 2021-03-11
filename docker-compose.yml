@@ -16,6 +16,9 @@ services:
     image: "rdevcd2020/prt-dev-backend:1.0"
     ports:
       - "2888:2888"
+    volumes:
+      - /app/portfolio/node_modules
+      - ./portfolio-backend:/app/portfolio
   frontend:
     build:
       context: ./portfolio-frontend
