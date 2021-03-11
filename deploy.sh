@@ -7,6 +7,8 @@ ssh-add ~/.ssh/id_rsa
 echo "Added keys"
 echo "Trying to ssh into digital ocean:"
 ssh test_travis@157.245.252.42
+echo "Changing into portfolio directory"
+cd portfolio
 echo "Tearing down site"
 sudo docker-compose down
 echo "Stopped all containers"
