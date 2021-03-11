@@ -73,19 +73,25 @@ eval "$(docker -v >> somefile.txt)"
 
 ### I have decided to disable password for the user
 
-```
-sudo EDITOR=nano visudo
-```
-
-### Look for a line that says root ALL=(ALL) ALL
-
-### Then run
+### SSH into the server as the root user then run
 
 ```
-user ALL=(ALL) NOPASSWD: ALL
+sudo visudo
 ```
 
-### This ensures that I can run sudo without a password
+### Look for a line that says
+
+```
+%sudo ALL=(ALL:ALL) ALL
+```
+
+### Change it to
+
+```
+%sudo   ALL=(ALL:ALL) NOPASSWD:ALL
+```
+
+### This ensures that all sudo users can run sudo without a password
 
 sudo docker run -d -p 80:2888 rdevcd2020/express-react-feb8:/app/portfolio
 
