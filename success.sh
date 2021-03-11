@@ -9,6 +9,9 @@ echo "Removing dangling containers"
 yes | sudo docker system prune
 echo "Removing previous images"
 sudo docker rmi rdevcd2020/express-react-feb8
+echo "Bringing up the new site..."
+sudo docker-compose up -d
+echo "Site live exiting {^_^}/"
 exit
 echo "If you get here, you need to receive your masters"
 echo "Deployment successful!!!!"
