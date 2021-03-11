@@ -2,8 +2,13 @@
 import LandingPage from "./components/Header/LandingPage";
 import ProjectsContainer from "./components/Containers/ProjectsContainer";
 import MainFooter from "./components/Footer/MainFooter";
+import useAppPage from "./hooks/useAppPage";
+import usePageTitle from "./hooks/usePageTitle";
+import AppContext from "./context/AppContext";
 import "./app.css";
-function App() {
+const App = () => {
+  const appPageObj = useAppPage();
+  usePageTitle(appPageObj);
   // const serverResponse = useTestServer();
   // let serverMessage;
   // if (serverResponse) {
@@ -11,12 +16,14 @@ function App() {
   //   serverMessage = `the ${testServer}  is ${message}`;
   // }
   return (
-    <div className="App">
-      <LandingPage />
-      <ProjectsContainer />
-      <MainFooter />
-    </div>
+    <AppContext.Provider value={appPageObj}>
+      <div className="App">
+        <LandingPage />
+        <ProjectsContainer />
+        <MainFooter />
+      </div>
+    </AppContext.Provider>
   );
-}
+};
 
 export default App;
