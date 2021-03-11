@@ -17,8 +17,7 @@ export default ({ appPage }) => {
         document.title = "Freenovation | Hire Me";
         break;
       default:
-        document.title =
-          "Freenovation | Software development & Programming Tutorials";
+        document.title = "Freenovation | JavaScript Web Development";
     }
   });
 };
