@@ -1,13 +1,30 @@
 #header-home {
-  width: 100vw;
-  height: 100vh;
 }
 .backgroundImg {
-  background: url(../../assets/img/showcase.jpg) no-repeat center/cover;
-  width: 100%;
-  height: 100%;
+  background: url(../../assets/img/showcase.jpg) no-repeat center right/cover;
+  height: 100vh;
   color: white;
   position: relative;
+}
+
+.backgroundImgNoIndex {
+  background: url(../../assets/img/showcase.jpg) no-repeat 20% 30% / cover;
+  height: 5.5rem;
+  border-bottom: 3px solid #ffbc00;
+  color: white;
+  position: relative;
+}
+
+.backgroundImgNoIndex::before {
+  z-index: 1;
+  position: absolute;
+  display: block;
+  content: "";
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(20, 20, 40, 0.5);
 }
 
 .backgroundImg::before {
