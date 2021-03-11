@@ -69,6 +69,24 @@ eval "$(docker -v >> somefile.txt)"
 
 ### Because of this, I prefer the one line method, as I can log values after I exit the servers
 
+### Running sudo code with a passowrd is tedious
+
+### I have decided to disable password for the user
+
+```
+sudo EDITOR=nano visudo
+```
+
+### Look for a line that says root ALL=(ALL) ALL
+
+### Then run
+
+```
+user ALL=(ALL) NOPASSWD: ALL
+```
+
+### This ensures that I can run sudo without a password
+
 sudo docker run -d -p 80:2888 rdevcd2020/express-react-feb8:/app/portfolio
 
 docker cp config.js 23c75289a7b7:/app/portfolio
