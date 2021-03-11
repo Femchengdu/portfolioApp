@@ -3,6 +3,7 @@ import HeaderLandingContent from "../Header/HeaderLandingContent";
 import CenterComponent from "../Containers/CenterComponent";
 import MainNavContainer from "../Nav/MainNavContainer";
 import MainNavLogo from "../Nav/MainNavLogo";
+import MainNavList from "../Nav/MainNavList";
 import "./landing.css";
 const LandingPage = () => {
   return (
@@ -11,9 +12,7 @@ const LandingPage = () => {
         <CenterComponent addTintPosition={true}>
           <MainNavContainer>
             <MainNavLogo />
-            <div style={{ width: "50px" }}>
-              {/* This is a placeholder for the navigation links */}
-            </div>
+            <MainNavList />
           </MainNavContainer>
           <HeaderLandingContent />
         </CenterComponent>
